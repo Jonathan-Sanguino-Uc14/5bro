@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=390">
+<title>Monochrome — Auth</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#333;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif;}
+  .phone{width:390px;height:844px;background:#fff;overflow:hidden;position:relative;display:flex;flex-direction:column;}
+
+  /* Top bar */
+  .topbar{height:52px;background:#000;flex-shrink:0;display:flex;align-items:flex-end;padding:0 24px 10px;}
+  .topbar-label{color:#fff;font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;opacity:.4;}
+
+  /* Main */
+  .main{flex:1;padding:40px 28px 32px;display:flex;flex-direction:column;}
+
+  .wordmark{font-size:40px;font-weight:300;letter-spacing:-.04em;color:#000;line-height:1;margin-bottom:4px;}
+  .descriptor{font-size:11px;font-weight:400;color:#999;letter-spacing:.06em;margin-bottom:44px;}
+
+  .field-group{margin-bottom:0;}
+  .field-label{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#000;margin-bottom:8px;display:block;}
+  .field{width:100%;border:none;border-bottom:1.5px solid #000;padding:10px 0 8px;font-family:'Inter',sans-serif;font-size:15px;color:#000;background:transparent;outline:none;margin-bottom:24px;}
+  .field::placeholder{color:#bbb;}
+
+  .cta{width:100%;background:#000;color:#fff;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:16px 0;text-align:center;border:none;cursor:pointer;margin-top:4px;}
+
+  .forgot{font-size:10px;color:#999;letter-spacing:.06em;text-align:center;margin-top:12px;text-decoration:underline;cursor:pointer;}
+
+  .or{display:flex;align-items:center;gap:16px;margin:24px 0;}
+  .or-line{flex:1;height:1px;background:#eee;}
+  .or-text{font-size:10px;color:#ccc;letter-spacing:.12em;text-transform:uppercase;font-weight:500;}
+
+  .alt-row{display:flex;gap:8px;margin-bottom:0;}
+  .alt{flex:1;border:1.5px solid #000;padding:12px 8px;text-align:center;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#000;cursor:pointer;}
+  .alt .icon{display:block;font-size:14px;margin-bottom:4px;}
+
+  .register-row{margin-top:auto;padding-top:20px;border-top:1px solid #f0f0f0;display:flex;justify-content:center;gap:6px;}
+  .register-row span{font-size:11px;color:#999;}
+  .register-row a{font-size:11px;color:#000;font-weight:600;text-decoration:none;}
+
+  /* Grid overlay (subtle) */
+  .phone::before{content:'';position:absolute;inset:0;background-image:linear-gradient(#0000000a 1px,transparent 1px),linear-gradient(90deg,#0000000a 1px,transparent 1px);background-size:20px 20px;pointer-events:none;z-index:0;}
+  .main{position:relative;z-index:1;}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="topbar"><span class="topbar-label">Control financiero</span></div>
+  <div class="main">
+    <div class="wordmark">leticIA</div>
+    <div class="descriptor">Tu negocio en claro</div>
+
+    <label class="field-label">Correo electrónico</label>
+    <input class="field" type="email" placeholder="nombre@negocio.com" disabled>
+
+    <label class="field-label">Contraseña</label>
+    <input class="field" type="password" placeholder="••••••••" disabled>
+
+    <div class="cta">Ingresar</div>
+    <div class="forgot">¿Olvidaste tu contraseña?</div>
+
+    <div class="or">
+      <div class="or-line"></div>
+      <div class="or-text">o</div>
+      <div class="or-line"></div>
+    </div>
+
+    <div class="alt-row">
+      <div class="alt"><span class="icon">G</span>Google</div>
+      <div class="alt"><span class="icon">⬡</span>Biometría</div>
+    </div>
+
+    <div class="register-row">
+      <span>¿Sin cuenta?</span>
+      <a href="#">Crear cuenta</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

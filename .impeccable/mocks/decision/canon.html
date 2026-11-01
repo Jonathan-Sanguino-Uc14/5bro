@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=390">
+<title>Canon — Auth</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#E8ECF4;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif;}
+  .phone{width:390px;height:844px;background:#F2F4F8;overflow:hidden;position:relative;display:flex;flex-direction:column;}
+
+  /* Status bar placeholder */
+  .statusbar{height:44px;background:#F2F4F8;flex-shrink:0;}
+
+  /* Hero */
+  .hero{padding:20px 28px 24px;text-align:center;}
+  .app-icon{width:64px;height:64px;background:linear-gradient(135deg,#2563EB,#1E40AF);border-radius:18px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;}
+  .app-icon span{color:#fff;font-size:22px;font-weight:700;}
+  .app-title{font-size:22px;font-weight:700;color:#1E293B;letter-spacing:-.01em;}
+  .app-sub{font-size:13px;color:#64748B;margin-top:4px;}
+
+  /* Card */
+  .card{margin:0 20px;background:#fff;border-radius:20px;padding:24px 20px;box-shadow:0 2px 12px #00000010;}
+
+  .field-wrap{margin-bottom:14px;}
+  .field-label{font-size:12px;font-weight:500;color:#475569;margin-bottom:6px;display:block;letter-spacing:.01em;}
+  .field{width:100%;border:1.5px solid #E2E8F0;border-radius:12px;padding:13px 14px;font-family:'Inter',sans-serif;font-size:15px;color:#1E293B;background:#F8FAFC;outline:none;}
+  .field.placeholder-val{color:#94A3B8;}
+
+  .forgot{font-size:12px;color:#2563EB;text-align:right;margin-top:-8px;margin-bottom:20px;}
+
+  .cta{width:100%;background:#2563EB;color:#fff;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;border:none;border-radius:14px;padding:15px 0;cursor:pointer;letter-spacing:.01em;}
+
+  .or{display:flex;align-items:center;gap:10px;margin:18px 0;}
+  .or-line{flex:1;height:1px;background:#E2E8F0;}
+  .or-text{font-size:12px;color:#94A3B8;font-weight:500;}
+
+  .social-row{display:flex;gap:10px;}
+  .social-btn{flex:1;border:1.5px solid #E2E8F0;border-radius:12px;padding:12px 8px;text-align:center;font-size:13px;font-weight:500;color:#1E293B;background:#fff;cursor:pointer;}
+  .social-btn .icon{display:block;font-size:16px;margin-bottom:3px;}
+
+  .footer{margin-top:24px;text-align:center;}
+  .footer span{font-size:13px;color:#64748B;}
+  .footer a{font-size:13px;color:#2563EB;font-weight:600;text-decoration:none;}
+
+  .bottom-nav{margin-top:auto;height:80px;background:#F2F4F8;border-top:1px solid #E2E8F0;flex-shrink:0;}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="statusbar"></div>
+
+  <div class="hero">
+    <div class="app-icon"><span>L</span></div>
+    <div class="app-title">leticIA</div>
+    <div class="app-sub">Controla tus finanzas</div>
+  </div>
+
+  <div class="card">
+    <div class="field-wrap">
+      <label class="field-label">Correo electrónico</label>
+      <div class="field placeholder-val">nombre@negocio.com</div>
+    </div>
+    <div class="field-wrap">
+      <label class="field-label">Contraseña</label>
+      <div class="field placeholder-val">••••••••</div>
+    </div>
+    <div class="forgot">¿Olvidaste tu contraseña?</div>
+
+    <div class="cta">Iniciar sesión</div>
+
+    <div class="or">
+      <div class="or-line"></div>
+      <div class="or-text">o continúa con</div>
+      <div class="or-line"></div>
+    </div>
+
+    <div class="social-row">
+      <div class="social-btn"><span class="icon">G</span>Google</div>
+      <div class="social-btn"><span class="icon">⬡</span>Biometría</div>
+    </div>
+
+    <div class="footer">
+      <span>¿No tienes cuenta? </span>
+      <a href="#">Regístrate</a>
+    </div>
+  </div>
+
+  <div class="bottom-nav"></div>
+</div>
+</body>
+</html>

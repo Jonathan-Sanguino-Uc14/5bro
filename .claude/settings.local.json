@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"C:\\\\Users\\\\jonis\\\\OneDrive\\\\Escritorio\\\\leticIA\\\\mi-app\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable.cmd\" context *)",
+      "Bash(\".claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable.cmd\" concept-seed *)",
+      "Bash(\".claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable.cmd\" serve-question *)",
+      "Bash(.claude/skills/impeccable/scripts/impeccable.cmd serve-question *)",
+      "Bash(start *)",
+      "Bash(.claude/skills/impeccable/scripts/impeccable.cmd concept-seed *)",
+      "Bash(npx expo *)",
+      "Bash(.claude/skills/impeccable/scripts/impeccable.cmd context *)",
+      "Bash(.claude/skills/impeccable/scripts/impeccable.cmd polish *)",
+      "Bash(.claude/skills/impeccable/scripts/impeccable.cmd --help)",
+      "Bash(.claude/skills/impeccable/scripts/impeccable.cmd detect *)",
+      "Bash(npx tsc *)",
+      "Bash(C:\\\\Users\\\\jonis\\\\OneDrive\\\\Escritorio\\\\leticIA\\\\mi-app\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\impeccable.cmd context *)",
+      "Bash(cmd.exe *)",
+      "Bash(\".claude/skills/impeccable/scripts/impeccable.cmd\" context *)",
+      "Bash(C:/Users/jonis/OneDrive/Escritorio/leticIA/mi-app/.claude/skills/impeccable/scripts/impeccable.cmd context *)",
+      "Bash(npm install *)",
+      "Bash(npx jest *)"
+    ]
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "title": "Elige el mundo visual — Auth",
+  "question": "El roll asignó Pizarrón de Menú. El challenger Boarding Pass ganó ambos ejes y toma el liderazgo. ¿Confirmás esta dirección o preferís otra?",
+  "options": [
+    {
+      "id": "assigned",
+      "kind": "assigned",
+      "label": "Tarjeta de embarque",
+      "kicker": "EL ROLL / GANADOR",
+      "lineage": "Boarding passes and airport gate board displays",
+      "thesis": "El acceso a tu negocio como pasaje: panel oscuro de puerta, cuerpo claro de stub, una sola acción en ámbar.",
+      "palette": ["#F5F3EF", "#1A1A1A", "#F5A623", "#8A8680"],
+      "materials": ["dark gate panel", "perforated ticket stub", "monospace tabular type"],
+      "viewport": "Panel de aerolínea oscuro con nombre de app y datos de vuelo, línea de perforación, cuerpo ivory con campos en monospace, CTA ámbar 'INGRESAR ▶', divisor punteado, accesos alternativos como 'puertas alternas'.",
+      "risk": "Puede leer frío si el panel oscuro domina demasiado; el ámbar debe anclar calidez.",
+      "raised": [
+        {"from": "ikeda-datamatics", "raise": "Monospace tabular para todos los campos de datos y cifras."},
+        {"from": "aww2-zoo-gardens-guide-map", "raise": "Color plano sin gradientes en ningún elemento."},
+        {"from": "notation-diagram-systems-star-atlas", "raise": "Jerarquía por escala — el CTA gobierna siendo el elemento más grande."},
+        {"from": "pop-culture-shelf-vertical-video-feed-surface", "raise": "Un paso enfocado por pantalla; sin caminos paralelos compitiendo."}
+      ],
+      "html": ".impeccable/mocks/decision/assigned.html",
+      "htmlFrame": "390x844"
+    },
+    {
+      "id": "pick",
+      "kind": "pick",
+      "label": "Recibo de caja",
+      "kicker": "SELECCIÓN IMPECCABLE",
+      "lineage": "Thermal cash register receipts",
+      "thesis": "El acceso como recibo térmico: columna estrecha de papel, campos como líneas de ítem, total-como-acción.",
+      "palette": ["#F7F5F0", "#111111", "#BBBBBB", "#888888"],
+      "materials": ["thermal paper roll", "dot-matrix ink", "perforated edge"],
+      "viewport": "Columna centrada con borde serrado arriba y abajo, nombre de negocio como cabecera de tienda, campos como ítems de recibo, CTA como línea de total en negativo.",
+      "risk": "El ancho muy estrecho puede resultar incómodo para texto largo de errores.",
+      "html": ".impeccable/mocks/decision/pick.html",
+      "htmlFrame": "390x844"
+    },
+    {
+      "id": "challenger-monochrome",
+      "kind": "challenger",
+      "catalogId": "digital-design-canon-monochrome-product-marketing",
+      "label": "Marketing monocromático",
+      "lineage": "Monochrome product marketing and Swiss grid design",
+      "thesis": "Negro sobre blanco absoluto: sin color, sin ornamento, solo tipo y proporción.",
+      "palette": ["#000000", "#FFFFFF", "#999999"],
+      "materials": ["flat white ground", "weight-contrast typography", "tight grid"],
+      "viewport": "Barra negra de estado, wordmark ligero a 40px, campos con underline único, CTA negro sólido al ancho completo.",
+      "verdict": "competitive",
+      "case": "Gana en claridad de producto; pierde levemente en identificación de audiencia — el comerciante no se reconoce en un estudio de diseño suizo.",
+      "risk": "Se confunde con cualquier SaaS premium; requiere otra señal de identidad para diferenciarse.",
+      "html": ".impeccable/mocks/decision/challenger-monochrome.html",
+      "htmlFrame": "390x844"
+    },
+    {
+      "id": "challenger-ikeda",
+      "kind": "challenger",
+      "catalogId": "ikeda-datamatics",
+      "label": "Ikeda Datamatics",
+      "lineage": "Ryoji Ikeda data installation series",
+      "thesis": "Datos financieros como señal pura: blanco sobre negro absoluto, tabular y austero.",
+      "palette": ["#000000", "#FFFFFF", "#0000FF"],
+      "materials": ["cathode ray phosphor", "binary stream"],
+      "viewport": "Fondo negro total, formulario en tipo verde-fósforo tabular sin ornamento.",
+      "verdict": "declined",
+      "case": "Identifica con artista digital o desarrollador, no con comerciante activo en su puesto.",
+      "kept": "Monospace tabular para todos los campos de datos y cifras.",
+      "risk": "Lee como terminal de sistema; aleja directamente al usuario meta."
+    },
+    {
+      "id": "challenger-zoo",
+      "kind": "challenger",
+      "catalogId": "aww2-zoo-gardens-guide-map",
+      "label": "Mapa de jardín zoológico",
+      "lineage": "Illustrated large-format zoo visitor guide maps",
+      "thesis": "Zonas de color plano sobre papel ilustrado — cada sección su propio territorio.",
+      "palette": ["#5B8C5A", "#E8C547", "#C24B3A", "#F5F0E8"],
+      "materials": ["flat zone illustration", "cartographic hatching"],
+      "viewport": "Mapa ilustrado de zonas, formulario encajado como cabina de información del parque.",
+      "verdict": "declined",
+      "case": "El tono lúdico vacacional no comunica agilidad financiera ni confianza en el registro.",
+      "kept": "Color plano sin gradientes: el mundo se lee de un golpe sin modulación.",
+      "risk": "El comerciante está en medio de una venta, no de un día de paseo."
+    },
+    {
+      "id": "challenger-star-atlas",
+      "kind": "challenger",
+      "catalogId": "notation-diagram-systems-star-atlas",
+      "label": "Atlas estelar",
+      "lineage": "Astronomical navigation star atlas charts",
+      "thesis": "El mapa celeste aplicado a finanzas: tamaño y posición llevan todo el significado.",
+      "palette": ["#0A0E1A", "#C8D4E8", "#F5C842", "#8899BB"],
+      "materials": ["dot-matrix magnitude scale", "cartographic projection"],
+      "viewport": "Fondo azul noche, formulario como constelación flotante de campos.",
+      "verdict": "declined",
+      "case": "La oscuridad evoca complejidad sistémica; el comerciante necesita claridad en 30 segundos.",
+      "kept": "El elemento más importante es el más grande — jerarquía por escala pura.",
+      "risk": "Fondo oscuro + puntos estelares lee como app de cripto o astronomía."
+    },
+    {
+      "id": "challenger-video-feed",
+      "kind": "challenger",
+      "catalogId": "pop-culture-shelf-vertical-video-feed-surface",
+      "label": "Pantalla de video vertical",
+      "lineage": "Short-form vertical video platform UI surfaces",
+      "thesis": "Un ítem a la vez, pantalla completa, deslizar para continuar.",
+      "palette": ["#000000", "#FFFFFF", "#FF0050", "#25F4EE"],
+      "materials": ["full-bleed video frame", "floating overlay text"],
+      "viewport": "Pantalla completa oscura, formulario como overlay de video, gesto de swipe para avanzar.",
+      "verdict": "declined",
+      "case": "El paradigma de feed choca con el acto intencional de registrar una venta.",
+      "kept": "Un paso enfocado dueño de toda la pantalla; sin caminos paralelos compitiendo.",
+      "risk": "El swipe es gesto de entretenimiento; el registro financiero es acción deliberada."
+    }
+  ],
+  "reroll": {
+    "registers": ["safer", "bolder"]
+  },
+  "buildPath": {
+    "value": "code",
+    "toggle": false
+  },
+  "canon": true,
+  "canonCard": {
+    "kind": "canon",
+    "label": "El estándar de la categoría",
+    "thesis": "Lo que cualquier app fintech para comerciantes entrega — ejecutado con craft impecable.",
+    "palette": ["#FFFFFF", "#111827", "#2563EB"],
+    "materials": ["clean card grid", "rounded corners", "system UI"],
+    "viewport": "Tarjeta blanca con sombra, email + contraseña, botón azul primario, 'o continúa con', Google y biometría.",
+    "risk": "Indistinguible de la competencia por diseño — diferenciación vendrá solo del contenido.",
+    "html": ".impeccable/mocks/decision/canon.html",
+    "htmlFrame": "390x844"
+  }
+}
