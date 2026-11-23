@@ -1,8 +1,8 @@
-import { createClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/client'
 import type { Insumo, MovimientoInsumo } from '@/types'
 
 export async function getInsumos(userId: string): Promise<Insumo[]> {
-  const supabase = await createClient()
+  const supabase = createClient()
   const { data, error } = await supabase
     .from('insumos')
     .select('id, nombre, unidad, stock_mili, costo_unitario_centavos, activo, user_id')
@@ -16,11 +16,17 @@ export async function getInsumos(userId: string): Promise<Insumo[]> {
   return (data ?? []) as Insumo[]
 }
 
-export async function getMovimientosInsumo(userId: string, from: string, to: string): Promise<MovimientoInsumo[]> {
-  const supabase = await createClient()
+export async function getMovimientosInsumo(
+  userId: string,
+  from: string,
+  to: string
+): Promise<MovimientoInsumo[]> {
+  const supabase = createClient()
   const { data, error } = await supabase
     .from('movimientos_insumo')
-    .select('id, insumo_id, dia, tipo, cantidad_mili, costo_total_centavos, creado_en, user_id, insumos(nombre)')
+    .select(
+      'id, insumo_id, dia, tipo, cantidad_mili, costo_total_centavos, creado_en, user_id, insumos(nombre)'
+    )
     .eq('user_id', userId)
     .gte('dia', from)
     .lte('dia', to)

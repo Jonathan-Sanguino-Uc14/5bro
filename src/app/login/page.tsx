@@ -1,25 +1,48 @@
 'use client'
 
-import { useState, useTransition } from 'react'
-import { login } from '@/app/auth/actions'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '@/lib/auth/AuthProvider'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 export default function LoginPage() {
+  const { signIn, user, loading } = useAuth()
+  const router = useRouter()
   const [error, setError] = useState<string | null>(null)
-  const [isPending, startTransition] = useTransition()
+  const [isPending, setIsPending] = useState(false)
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  useEffect(() => {
+    if (!loading && user) {
+      router.replace('/dashboard/')
+    }
+  }, [loading, user, router])
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError(null)
+    setIsPending(true)
     const formData = new FormData(e.currentTarget)
-    startTransition(async () => {
-      const result = await login(formData)
-      if (result?.error) setError(result.error)
-    })
+    const email = formData.get('email') as string
+    const password = formData.get('password') as string
+    const result = await signIn(email, password)
+    setIsPending(false)
+    if (result.error) {
+      setError(result.error)
+    } else {
+      router.replace('/dashboard/')
+    }
   }
+
+  if (loading) return null
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-background p-4">
@@ -27,13 +50,17 @@ export default function LoginPage() {
         {/* Brand */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold tracking-tight text-primary">5Bro</h1>
-          <p className="text-muted-foreground mt-1 text-sm">Panel de métricas de tu negocio</p>
+          <p className="text-muted-foreground mt-1 text-sm">
+            Panel de métricas de tu negocio
+          </p>
         </div>
 
         <Card>
           <CardHeader>
             <CardTitle>Iniciar sesión</CardTitle>
-            <CardDescription>Usá el mismo email y contraseña de la app móvil.</CardDescription>
+            <CardDescription>
+              Usá el mismo email y contraseña de la app móvil.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">

@@ -1,73 +1,91 @@
-# 5Bro — Panel de métricas
+# 5Bro Dashboard
 
-Dashboard web de métricas de ventas para la app móvil **5Bro** (Expo + Supabase).
+Dashboard de gestión para 5Bro. Muestra ventas, productos, inventario y operaciones. Se despliega como sitio estático en GitHub Pages.
 
-Mismo email y contraseña que la app móvil.
+## Tecnologías
 
-## Requisitos
+- **Next.js** (App Router, `output: 'export'`)
+- **Supabase** (autenticación y base de datos, cliente de navegador)
+- **Tailwind CSS** + **shadcn/ui**
+- **ECharts** para gráficos
 
-- Node.js 18+
-- Variables de entorno configuradas en `.env.local`
+## Configuración local
 
-## Variables de entorno
-
-Crear un archivo `.env.local` en la raíz del proyecto (ver `.env.example`):
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://xxxxxxxxxxxxxxxx.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_anon_key_aqui
-```
-
-Estos valores son los mismos que `EXPO_PUBLIC_SUPABASE_URL` y `EXPO_PUBLIC_SUPABASE_ANON_KEY` en `mi-app/.env.local`.
-
-## Correr en desarrollo
+### 1. Instalar dependencias
 
 ```bash
 npm install
+```
+
+### 2. Variables de entorno
+
+Crear `.env.local` en la raíz del proyecto:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=tu_url_de_supabase
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_anon_key_de_supabase
+```
+
+> Nunca commitear `.env.local`. Está en `.gitignore`.
+
+### 3. Correr en desarrollo
+
+```bash
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000) en el navegador.
-
-### Ver desde el celular (misma red Wi-Fi)
+### 4. Build local (simula GitHub Pages)
 
 ```bash
-npm run dev -- -H 0.0.0.0
+NEXT_PUBLIC_BASE_PATH=/5bro npm run build
 ```
 
-Luego abrí `http://<IP-de-tu-PC>:3000` desde el celular. Para ver tu IP en Windows: `ipconfig` y buscá "IPv4" bajo tu adaptador Wi-Fi.
+Los archivos estáticos quedan en `out/`.
 
-## Build de producción
+## Despliegue en GitHub Pages
 
-```bash
-npm run build
-npm start
+### Configuración de secretos en el repositorio
+
+En **Settings → Secrets and variables → Actions**, agregar:
+
+| Nombre | Valor |
+|--------|-------|
+| `NEXT_PUBLIC_SUPABASE_URL` | URL del proyecto Supabase |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Anon key del proyecto Supabase |
+
+### Rama de deploy
+
+El workflow `.github/workflows/deploy-pages.yml` se dispara al hacer push a la rama `dashboard`. Genera el sitio estático con `basePath=/5bro` y lo publica en la rama `gh-pages`.
+
+### Configurar GitHub Pages
+
+En **Settings → Pages**:
+- **Source**: Deploy from a branch
+- **Branch**: `gh-pages` / `/ (root)`
+
+El sitio queda disponible en: `https://<usuario>.github.io/5bro/`
+
+## Estructura
+
+```
+src/
+  app/
+    dashboard/           # Páginas del dashboard (client components)
+    login/               # Página de login
+  components/            # Componentes reutilizables
+  lib/
+    auth/                # AuthProvider y hook useAuth
+    data/                # Fetchers de Supabase (browser client)
+    metrics.ts           # Funciones de agregación puras
+    periods.ts           # Manejo de rangos de fechas
+    supabase/client.ts   # Cliente de Supabase para el navegador
+  types/                 # Tipos TypeScript
+public/
+  .nojekyll              # Evita que GitHub Pages procese _next/ como Jekyll
 ```
 
-## Deploy en Vercel
+## Autenticación
 
-1. Crear proyecto en [vercel.com](https://vercel.com) e importar esta carpeta.
-2. En **Settings → Environment Variables**, agregar:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-3. Hacer deploy.
-4. En el panel de Supabase → **Authentication → URL Configuration → Redirect URLs**, agregar la URL de Vercel: `https://tu-proyecto.vercel.app/**`
+La autenticación es completamente client-side usando `@supabase/ssr` con `createBrowserClient`. La sesión se persiste en `localStorage`. El `AuthProvider` escucha cambios de sesión con `onAuthStateChange`.
 
-## Páginas
-
-| Ruta | Descripción |
-|------|-------------|
-| `/` | Redirige a `/dashboard` |
-| `/login` | Inicio de sesión |
-| `/dashboard` | Resumen general con KPIs y gráficas |
-| `/dashboard/productos` | Top productos por ingresos y unidades, márgenes |
-| `/dashboard/inventario` | Stock de insumos, valor de inventario, compras |
-| `/dashboard/operaciones` | Tabla paginada de todas las operaciones con exportación CSV |
-
-## Stack técnico
-
-- **Next.js** (App Router, TypeScript)
-- **Tailwind CSS** + **shadcn/ui**
-- **Apache ECharts** (renderizado cliente, `ssr: false`)
-- **Motion** (animaciones de entrada, respeta `prefers-reduced-motion`)
-- **Supabase** (`@supabase/supabase-js` + `@supabase/ssr`, sesiones por cookies)
+No hay server components, server actions ni middleware en este proyecto.

@@ -1,8 +1,8 @@
-import { createClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/client'
 import type { Venta, VentaItem } from '@/types'
 
 export async function getVentas(userId: string, from: string, to: string): Promise<Venta[]> {
-  const supabase = await createClient()
+  const supabase = createClient()
   const { data, error } = await supabase
     .from('ventas')
     .select('id, vendido_en, dia, total_centavos, metodo_pago, nota, user_id')
@@ -18,9 +18,13 @@ export async function getVentas(userId: string, from: string, to: string): Promi
   return (data ?? []) as Venta[]
 }
 
-export async function getVentaItems(userId: string, from: string, to: string): Promise<VentaItem[]> {
-  const supabase = await createClient()
-  // Join via ventas to filter by user and date
+export async function getVentaItems(
+  userId: string,
+  from: string,
+  to: string
+): Promise<VentaItem[]> {
+  const supabase = createClient()
+
   const { data: ventasData, error: ventasError } = await supabase
     .from('ventas')
     .select('id')
@@ -34,7 +38,9 @@ export async function getVentaItems(userId: string, from: string, to: string): P
 
   const { data, error } = await supabase
     .from('venta_items')
-    .select('id, venta_id, producto_id, cantidad, precio_unitario_centavos, costo_unitario_centavos, productos(nombre)')
+    .select(
+      'id, venta_id, producto_id, cantidad, precio_unitario_centavos, costo_unitario_centavos, productos(nombre)'
+    )
     .in('venta_id', ventaIds)
 
   if (error) {
